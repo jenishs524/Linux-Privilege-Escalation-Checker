@@ -1,9 +1,13 @@
 # Linux-Privilege-Escalation-Checker
 
+Linux Privilege Escalation Checker 
+ It is an advanced, automated security auditing tool that systematically scans a Linux system to identify misconfigurations, weak permissions, and vulnerable services that could allow an attacker to elevate their privileges from a standard user to root (or another high‑privileged account). This is a critical component of both penetration testing and system hardening.
+
 
 🎯 Objective
 
 To automate the enumeration of common privilege escalation vectors on a Linux system. Manual privilege escalation checks are time‑consuming and error‑prone; this tool consolidates dozens of manual commands into a single, structured report. It helps system administrators proactively close security gaps and helps penetration testers quickly identify the most promising attack paths during an engagement.
+
 🧠 How It Works – Technical Overview
 
 The tool (written in Bash and Python) performs a non‑intrusive, read‑only scan of the target system. It queries system files, process listings, scheduled tasks, and environment variables using native Linux utilities. All checks are performed with the permissions of the current user—simulating exactly what an attacker who has gained initial low‑privileged access would see.
@@ -18,6 +22,7 @@ Cron Jobs	Scheduled tasks (in /etc/cron*, user crontabs) and their associated sc
 Kernel Version	The uname -a output to check for vulnerable kernels.	Outdated kernels are often vulnerable to well‑known local privilege escalation exploits (e.g., Dirty Cow, OverlayFS).
 Environment Variables	Sensitive variables like LD_PRELOAD, LD_LIBRARY_PATH, PYTHONPATH.	Misconfigured library paths can be abused to load malicious shared libraries into privileged processes.
 Weak Password Files	World‑readable files with names containing passwd, secret, key, etc.	Hard‑coded credentials or sensitive keys stored in plaintext are a goldmine for attackers.
+
 ✨ Advanced Features (Real‑World Upgrade)
 Feature	Implementation
 Comprehensive Coverage	Executes 10+ distinct checks covering filesystem, process, network, and kernel vectors – far beyond a simple sudo -l.
